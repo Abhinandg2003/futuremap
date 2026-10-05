@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- Design tokens (global) ---------- */
+:root {
+  --brand: #0069ff;
+  --ink: #1d1d1f;      /* Apple-style near-black text */
+  --muted: #6e6e73;    /* secondary text */
+  --line: #e8e8ed;     /* hairlines */
+  --surface: #f5f5f7;  /* soft grey sections */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+html { scroll-behavior: smooth; }
+body { color: var(--ink); background: #fff; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--brand); color: #fff; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
+
+/* ---------- Global classes (reused everywhere) ---------- */
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
+  .section { @apply py-20 sm:py-28; }
+  .section-grey { background: var(--surface); }
+  .h-display { @apply text-4xl font-semibold sm:text-6xl lg:text-7xl; letter-spacing: -0.035em; line-height: 1.04; }
+  .h-section { @apply text-3xl font-semibold sm:text-5xl; letter-spacing: -0.03em; line-height: 1.08; }
+  .lead { @apply text-lg sm:text-xl; color: var(--muted); line-height: 1.5; }
+  .muted { color: var(--muted); }
+
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-medium transition-all duration-500 ease-apple; }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary { background: var(--brand); color: #fff; }
+  
+  .btn-ghost { background: #fff; color: var(--ink);  }
+  .btn-ghost:hover {  }
+
+
+  /* ---------- Arrow-swap button (use together with .btn) ---------- */
+/* Rest: text + right arrow. Hover: right arrow slides out, left arrow slides in. */
+.btn-arrow { gap: 0; overflow: hidden; }
+
+.btn-arrow__icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: width .55s var(--ease), opacity .55s var(--ease), transform .55s var(--ease);
+}
+/* Left arrow: hidden at rest, parked off to the left */
+.btn-arrow__icon--in  { width: 0;    opacity: 0; transform: translateX(-14px); }
+/* Right arrow: visible at rest */
+.btn-arrow__icon--out { width: 24px; opacity: 1; transform: none; justify-content: flex-end; }
+
+.btn-arrow:hover .btn-arrow__icon--in  { width: 24px; opacity: 1; transform: none; }
+.btn-arrow:hover .btn-arrow__icon--out { width: 0;    opacity: 0; transform: translateX(14px); }
+
+  .card { @apply rounded-3xl bg-white p-7 sm:p-8 transition-all duration-500 ease-apple; border: 1px solid var(--line); }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -24px rgba(0,0,0,.18); }
+  .chip { @apply rounded-full px-4 py-2 text-sm transition-all duration-300 ease-apple; background: var(--surface); }
+  .chip:hover { background: var(--brand); color: #fff; transform: translateY(-2px); }
+}
+
+
+:root {
+  --sb-width: 5px;          /* scrollbar width */
+  --sb-thumb: #0069ff;       /* moving handle (brand color) */
+  --sb-thumb-hover: #0050c8; /* handle on hover */
+  --sb-track: #e8f1ff;       /* the non-scrollbar area behind the handle */
+  --sb-radius: 0px;        /* corner radius (999px = fully round) */
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar { width: var(--sb-width); height: var(--sb-width); }
+::-webkit-scrollbar-track { background: var(--sb-track); }
+::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb);
+  border-radius: var(--sb-radius);
+  /* a track-colored border makes the handle look slimmer and inset */
+  border: 0px solid var(--sb-track);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--sb-thumb-hover); }
+
+/* Firefox (supports only color and thin/auto width, not radius) */
+/* Firefox only. Chrome/Edge/Safari must NOT see these, or they ignore ::-webkit-scrollbar */
+@supports not selector(::-webkit-scrollbar) {
+  html { scrollbar-width: thin; scrollbar-color: var(--sb-thumb) var(--sb-track); }
+}
+
+
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
