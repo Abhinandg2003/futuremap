@@ -43,7 +43,7 @@ export default function Preloader() {
       {Array.from({ length: STRIPES }).map((_, i) => (
         <motion.div
           key={i}
-          className="h-full bg-brand"
+          className="h-full bg-white"
           style={{ width: "calc(25% + 1px)", marginRight: "-1px" }} // +1px overlap avoids hairline gaps
           initial={{ y: 0 }}
           animate={{ y: phase === "exit" ? "-100%" : 0 }}
@@ -66,7 +66,7 @@ export default function Preloader() {
         transition={{ duration: phase === "exit" ? 0.3 : 0.6, ease: EASE }}
       >
         {/* TODO: replace with your logo image: <Image src="/logo-white.svg" alt="FutureMap" width={160} height={40} priority /> */}
-        <img className="w-[70vw] md:w-[20vw] h-auto" src="/images/logowhite.png" alt="" />
+        <img className="w-[70vw] md:w-[20vw] h-auto" src="/images/logoblack.png" alt="" />
       </motion.div>
     </div>
   );

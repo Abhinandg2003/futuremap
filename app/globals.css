@@ -16,6 +16,9 @@ body { color: var(--ink); background: #fff; -webkit-font-smoothing: antialiased;
 ::selection { background: var(--brand); color: #fff; }
 :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; }
 
+/* Keeps the scrollbar's space reserved even when the preloader hides it, so the layout never shifts */
+html { scrollbar-gutter: stable; }
+
 /* ---------- Global classes (reused everywhere) ---------- */
 @layer components {
   .container-x { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
@@ -55,9 +58,81 @@ body { color: var(--ink); background: #fff; -webkit-font-smoothing: antialiased;
 
   .card { @apply rounded-3xl bg-white p-7 sm:p-8 transition-all duration-500 ease-apple; border: 1px solid var(--line); }
   .card:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -24px rgba(0,0,0,.18); }
+
+    .card2 { @apply rounded-3xl bg-white p-7 sm:p-8 transition-all duration-500 ease-apple;  }
+  .card2:hover { scale: 102%;}
+
+      .card3 { @apply rounded-3xl bg-white p-7 sm:p-8 transition-all duration-500 ease-apple; border: 1px solid var(--line);  }
+  .card2:hover { scale: 102%;}
+
+
   .chip { @apply rounded-full px-4 py-2 text-sm transition-all duration-300 ease-apple; background: var(--surface); }
   .chip:hover { background: var(--brand); color: #fff; transform: translateY(-2px); }
 }
+
+
+/* ---------- Carousel helpers ---------- */
+/* Hides the scrollbar on the carousel track (still scrolls and swipes) */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Pads the full-width track so the FIRST card lines up with the container's left edge
+   (72rem = max-w-6xl, 2rem = container side padding). The cards still overflow on both sides. */
+.bleed-pad { padding-inline: 1.25rem; scroll-padding-inline: 1.25rem; }
+@media (min-width: 640px) {
+  .bleed-pad {
+    padding-inline: max(2rem, calc((100% - 72rem) / 2 + 2rem));
+    scroll-padding-inline: max(2rem, calc((100% - 72rem) / 2 + 2rem));
+  }
+}
+
+/* ---------- WaveText: rainbow wave once, then cyan hover glow ---------- */
+/* Lets the browser animate the glow radius smoothly (a plain gradient can't transition) */
+@property --glow {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+
+.wave-text {
+  display: inline-block;
+  --x: 50%;
+  --y: 50%;
+  --glow: 0px;
+  /* Resting state: solid brand color, painted through the letters */
+  background-image: linear-gradient(var(--brand), var(--brand));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* The wave: a gradient 3x wider than the word. Brand | rainbow | brand.
+   Sliding it left to right sends the rainbow through the letters, ending back on brand. */
+.wave-text--run {
+  background-image: linear-gradient(
+    90deg,
+    var(--brand) 0%, var(--brand) 33.3%,
+    #ff3b6b 38%, #ff9f1c 43%, #ffe14d 48%, #3ddc84 53%, #22d3ee 58%, #8b5cf6 63%,
+    var(--brand) 66.6%, var(--brand) 100%
+  );
+  background-size: 300% 100%;
+  animation: wave-sweep 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards; /* TODO: speed = 1.8s (match WAVE_DURATION) */
+}
+@keyframes wave-sweep {
+  from { background-position: 0% 0; }
+  to   { background-position: 100% 0; }
+}
+
+/* After the wave: light cyan glow under the cursor, on top of the brand color */
+.wave-text--idle {
+  background-image:
+    radial-gradient(circle var(--glow) at var(--x) var(--y), #5ac5ff 0%, rgba(125, 249, 255, 0) 100%), /* TODO: glow color */
+    linear-gradient(var(--brand), var(--brand));
+  transition: --glow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.wave-text--idle:hover { --glow: 90px; } /* TODO: glow size */
+
 
 
 :root {

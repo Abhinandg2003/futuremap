@@ -7,6 +7,7 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import Logo from "@/components/Logo";
 
 export default function Navbar() {
   const path = usePathname();
@@ -27,10 +28,7 @@ export default function Navbar() {
       )}
     >
       <div className="container-x !max-w-[98vw] flex h-14 items-center justify-between">
-        {/* TODO: replace text logo with <Image src="/logo.svg" /> */}
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          Future<span className="text-brand">Map</span>
-        </Link>
+        <Logo heightClass="h-[25px]" /> 
 
         {/* Desktop nav: the active page is shown by text color only (no pill) */}
         <nav className="hidden items-center gap-1 lg:flex">
@@ -74,7 +72,7 @@ export default function Navbar() {
               key={n.href}
               href={n.href}
               onClick={() => setOpen(false)}
-              className="py-3 text-2xl font-semibold tracking-tight"
+              className="py-3 text-lg font-normal tracking-tight"
             >
               {n.label}
             </Link>
