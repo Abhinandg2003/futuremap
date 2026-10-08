@@ -84,7 +84,7 @@ export default function Home() {
             <div className="grid gap-8 rounded-[2rem] bg-[#F5F5F7] p-8 text-black sm:p-14 lg:grid-cols-2 lg:items-center">
               <div>
                 <h2 className="h-section !font-normal">
-                  Prometric stress? We&apos;ve got you.
+                  Not sure what&apos;s next? Let&apos;s map it together.
                 </h2>
                 <a
                   href="/exam-training"

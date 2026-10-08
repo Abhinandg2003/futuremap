@@ -10,10 +10,10 @@ export default function AboutPage() {
   return (
     <>
       {/* 1. Hero (same component as the other inner pages) */}
-      <PageHero
-  dark="Every great future"
-  grey="begins with opportunity."
-  text="We connect students and professionals with trusted education and career opportunities in India, the GCC and beyond."
+<PageHero
+  dark="Your next step,"
+  grey="made clearer."
+  text="FutureMap connects students and professionals with trusted opportunities in India and abroad."
 />
 
       {/* 2. Our story: same two-column layout as the home About section */}

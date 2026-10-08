@@ -20,8 +20,8 @@ export default function Page() {
   return (
     <>
       <PageHero
-        dark="Prometric stress?"
-        grey="We have you."
+        dark="Not sure what's next?"
+        grey="Let's map it together."
         text="Live and recorded classes, 100+ mock tests and help booking your exam."
       />
       <section className="section">

@@ -58,10 +58,10 @@ useEffect(() => {
       </div>
 
       {/* Content */}
-      <div className="container-x absolute left-1/2 px-8 md:px-0 md:top-[23vh] top-[18vh] z-10 mx-auto flex max-w-5xl -translate-x-1/2 flex-col items-center justify-center">
+      <div className="container-x absolute left-1/2 px-8 md:px-0 md:top-[20vh] top-[18vh] z-10 mx-auto flex max-w-5xl -translate-x-1/2 flex-col items-center justify-center">
         <Reveal>
           <h1 className="h-display  !mb-0 md:!text-[3.4rem] !text-[2.8rem] !font-light !text-white">
-            Your career abroad starts here{" "}
+            Every great future begins with opportunity{" "}
           </h1>
         </Reveal>
 

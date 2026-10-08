@@ -7,7 +7,7 @@ export default function CTA() {
         <Reveal>
           <div className="rounded-[2rem] bg-[var(--ink)] px-6 py-16 text-center text-white sm:py-24">
             <h2 className="h-section !font-medium">Ready? Let&apos;s talk.</h2>
-            <p className="mx-auto mt-4 max-w-md text-white/60">Send your CV or just say hi on WhatsApp.</p>
+            <p className="mx-auto mt-4 max-w-md text-white/60">Book a free counselling session.</p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <a href={site.whatsapp} className="btn btn-primary">Chat on WhatsApp</a>
 <a
