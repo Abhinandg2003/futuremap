@@ -14,7 +14,7 @@ import Accordion from "@/components/ui/Accordion";
 import { faqs, site } from "@/lib/site";
 import ArrowButton from "@/components/ui/ArrowButton";
 
-export const metadata = { title: "Exam Training — FutureMap" }; // TODO: SEO
+export const metadata = { title: "Exam Training", description: "Prometric and licensing exam preparation with live and recorded classes, 100+ mock tests and exam booking help.", alternates: { canonical: "/exam-training" } };
 
 export default function Page() {
   return (

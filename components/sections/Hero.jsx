@@ -7,6 +7,7 @@ import Reveal from "@/components/ui/Reveal";
 import ArrowButton from "@/components/ui/ArrowButton";
 import { useLoading } from "@/components/PreloaderContext";
 import { site } from "@/lib/site";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,7 +55,7 @@ useEffect(() => {
       >
         <div className="absolute inset-0 h-full w-full bg-black/5"></div>
         {/* TODO: replace with your final hero image */}
-        <img src="/images/heroimage.jpg" className="h-full w-full object-cover object-bottom" alt="" />
+        <Image src="/images/heroimage.jpg" fill  alt="Professionals starting their career abroad"  sizes="100vw"  className="h-full w-full object-cover object-bottom" priority         />
       </div>
 
       {/* Content */}

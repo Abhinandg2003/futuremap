@@ -8,10 +8,35 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import { roles } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+
+
+
 
 // TODO: images live in /public/images/roles/<slug>.jpg  e.g. nurses.jpg, male-nurses.jpg, lab-techs.jpg
 // A card without an image just shows a light grey block, so nothing breaks while you collect photos.
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+
+
+// Role photo with a fallback: if the file doesn't exist yet, show nothing (the grey card stays).
+function RoleImage({ name }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) return null;
+  return (
+    <Image
+      src={`/images/roles/${slug(name)}.jpg`}
+      alt={name}
+      fill
+      // matches the card widths: 85vw on mobile, then 176px, 30vw, 25vw
+      sizes="(min-width: 1024px) 25vw, (min-width: 768px) 30vw, (min-width: 640px) 176px, 85vw"
+      onError={() => setFailed(true)}
+      className="object-cover transition-transform duration-[1200ms] ease-apple group-hover:scale-105"
+    />
+  );
+}
+
+
 
 export default function RoleCarousel2() {
   const trackRef = useRef(null);
@@ -93,12 +118,7 @@ const go = (dir) => {
                 "w-[85vw] sm:w-44 md:w-[30vw] lg:w-[25vw] xl:w-[25vw]"
               )}
             >
-              <img
-                src={`/images/roles/${slug(name)}.jpg`}
-                alt=""
-                onError={(e) => (e.currentTarget.style.display = "none")} // hide if the photo isn't added yet
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-apple group-hover:scale-105"
-              />
+              <RoleImage name={name} />
               {/* Low-opacity dark gradient for readable text */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent" />
               {/* Role name: bottom center */}

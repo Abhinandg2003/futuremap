@@ -5,6 +5,7 @@ import { ArrowUpRight, Check } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import { services, steps, why, roles, countries, stepslong } from "@/lib/site";
+import Image from "next/image";
 
 
 // Subtext shown UNDER the card, only on touch screens (devices with no hover).
@@ -30,7 +31,8 @@ export const ServiceGrid = ({ items = services }) => (
       <Reveal key={s.title} delay={i * 0.07}>
         <Link href={s.href || "#"} className="group relative block aspect-[4/3] rounded-2xl  overflow-hidden bg-[var(--surface)]">
           {/* Photo. TODO: add real images in /public/images/services/ and set `image` in lib/site.js */}
-          {s.image && <img src={s.image} alt="" className="absolute inset-0 h-full w-full object-cover" />}
+          {s.image && <Image src={s.image} fill
+    sizes="(min-width: 1152px) 560px, (min-width: 640px) 50vw, 100vw"  alt="" className="absolute inset-0 h-full w-full object-cover" />}
 
           {/* Low-opacity dark gradient so the white text stays readable. Adjust the /60 for stronger or lighter. */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-black/0 to-transparent" />
@@ -64,7 +66,8 @@ export const CourseCards = ({ items }) => (
       <Reveal key={c.title} delay={i * 0.07} className="md:flex-1">
         <div className="group relative block aspect-[4/3] overflow-hidden rounded-2xl bg-[var(--surface)] md:aspect-[4/5]">
           {/* Photo. TODO: add images in /public/images/courses/ */}
-          {c.image && <img src={c.image} alt="" className="absolute inset-0 h-full w-full object-cover" />}
+          {c.image && <Image src={c.image} alt="" fill
+    sizes="(min-width: 1152px) 560px, (min-width: 640px) 50vw, 100vw" className="absolute inset-0 h-full w-full object-cover" />}
 
           {/* Dark gradient so the white text stays readable. Raise the /30 if your photos are bright */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/0 to-transparent" />
@@ -94,7 +97,8 @@ export const CourseCardssquare = ({ items }) => (
       <Reveal key={c.title} delay={i * 0.07} className="md:flex-1">
         <div className="group relative block aspect-square overflow-hidden rounded-2xl bg-[var(--surface)] md:aspect-square">
           {/* Photo. TODO: add images in /public/images/courses/ */}
-          {c.image && <img src={c.image} alt="" className="absolute inset-0 h-full w-full object-cover" />}
+          {c.image && <Image src={c.image} alt={c.image} fill
+    sizes="(min-width: 1152px) 560px, (min-width: 640px) 50vw, 100vw" className="absolute inset-0 h-full w-full object-cover" />}
 
           {/* Dark gradient so the white text stays readable. Raise the /30 if your photos are bright */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />
@@ -124,7 +128,8 @@ export const ServiceGrid2 = ({ items = services }) => (
       <Reveal key={s.title} delay={i * 0.07}>
         <Link href={s.href || "#"} className="group relative block aspect-[4/3] rounded-2xl  overflow-hidden bg-[var(--surface)]">
           {/* Photo. TODO: add real images in /public/images/services/ and set `image` in lib/site.js */}
-          {s.image && <img src={s.image} alt="" className="absolute inset-0 h-full w-full object-cover" />}
+          {s.image && <Image src={s.image} alt="" fill
+    sizes="(min-width: 1152px) 560px, (min-width: 640px) 50vw, 100vw" className="absolute inset-0 h-full w-full object-cover" />}
 
           {/* Low-opacity dark gradient so the white text stays readable. Adjust the /60 for stronger or lighter. */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-transparent" />

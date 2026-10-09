@@ -10,7 +10,7 @@ import {
 } from "@/components/sections/Blocks";
 import RoleCarousel2 from "@/components/sections/RoleCarousel2";
 
-export const metadata = { title: "Jobs Abroad — FutureMap" }; // TODO: SEO
+export const metadata = { title: "Jobs Abroad", description: "Hospital and healthcare jobs in the Gulf through licensed recruitment partners. We never charge for a job offer.", alternates: { canonical: "/jobs-abroad" } };
 
 export default function Page() {
   return (

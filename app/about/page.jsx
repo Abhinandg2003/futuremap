@@ -4,7 +4,7 @@ import Reveal from "@/components/ui/Reveal";
 import WaveText from "@/components/ui/WaveText";
 import { Title, CourseCards, WhyList, CourseCardssquare } from "@/components/sections/Blocks";
 
-export const metadata = { title: "About — FutureMap" }; // TODO: SEO title / description
+export const metadata = { title: "About", description: "FutureMap connects students and professionals with trusted education and career opportunities in India, the GCC and beyond.", alternates: { canonical: "/about" } };
 
 export default function AboutPage() {
   return (

@@ -10,7 +10,7 @@ import {
   Stepslong,
 } from "@/components/sections/Blocks";
 
-export const metadata = { title: "Services — FutureMap" }; // TODO: SEO
+export const metadata = { title: "Services", description: "Jobs abroad, exam training, documents and admissions. One team, start to finish.", alternates: { canonical: "/services" } };
 
 export default function Page() {
   return (

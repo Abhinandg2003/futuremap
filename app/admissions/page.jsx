@@ -12,7 +12,7 @@ import {
 import Accordion from "@/components/ui/Accordion";
 import { faqs } from "@/lib/site";
 
-export const metadata = { title: "Admissions — FutureMap" }; // TODO: SEO
+export const metadata = { title: "Admissions", description: "Admissions guidance for B.Sc Nursing, aviation, engineering and more, with clear options and fee guidance.", alternates: { canonical: "/admissions" } };
 
 export default function Page() {
   return (

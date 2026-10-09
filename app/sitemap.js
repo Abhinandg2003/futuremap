@@ -1,0 +1,13 @@
+// app/sitemap.js: lists every page for Google. Add new pages here.
+import { site } from "@/lib/site";
+
+const pages = ["", "/about", "/services", "/jobs-abroad", "/exam-training", "/admissions", "/contact"];
+
+export default function sitemap() {
+  return pages.map((p) => ({
+    url: `${site.url}${p}`,
+    lastModified: new Date(),
+    changeFrequency: p === "" ? "weekly" : "monthly",
+    priority: p === "" ? 1 : 0.7,
+  }));
+}

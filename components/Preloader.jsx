@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useLoading } from "@/components/PreloaderContext";
+import Image from "next/image";
 
 const STRIPES = 4;
 const MIN_DURATION = 1400; // TODO: minimum time (ms) the logo is shown
@@ -66,7 +67,7 @@ export default function Preloader() {
         transition={{ duration: phase === "exit" ? 0.3 : 0.6, ease: EASE }}
       >
         {/* TODO: replace with your logo image: <Image src="/logo-white.svg" alt="FutureMap" width={160} height={40} priority /> */}
-        <img className="w-[70vw] md:w-[20vw] h-auto" src="/images/logoblack.png" alt="" />
+        <Image className="w-[70vw] md:w-[20vw] h-auto" width={160} height={40} src="/images/logoblack.png" alt="" />
       </motion.div>
     </div>
   );

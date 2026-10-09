@@ -1,8 +1,7 @@
 import PageHero from "@/components/sections/PageHero";
 import ContactForm from "@/components/ContactForm";
 import { site } from "@/lib/site";
-export const metadata = { title: "Contact — FutureMap" };
-
+export const metadata = { title: "Contact", description: "Send your CV or message us on WhatsApp. Visit our office in Aluva, Kochi.", alternates: { canonical: "/contact" } };
 import MapEmbed from "@/components/MapEmbed";
 
 export default function Page() {
